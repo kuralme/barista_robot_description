@@ -31,6 +31,7 @@ endif()
 install(
   DIRECTORY
     urdf
+	xacro
     rviz
     launch
     meshes
