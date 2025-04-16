@@ -8,7 +8,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command
 from launch_ros.actions import Node
-from launch.actions import SetEnvironmentVariable
+from launch.actions import SetEnvironmentVariable, TimerAction
 
 def generate_launch_description():
     # Setup variables
@@ -32,7 +32,7 @@ def generate_launch_description():
         ),
     )
 
-    # RVIZ Configuration
+    # RVIZ Configuration - Delayed start
     rviz_config_dir = os.path.join(get_package_share_directory(package_description), 'rviz', 'urdf_vis.rviz')
     rviz_node = Node(
             package='rviz2',
@@ -41,6 +41,10 @@ def generate_launch_description():
             name='rviz_node',
             parameters=[{'use_sim_time': True}],
             arguments=['-d', rviz_config_dir]
+    )
+    delayed_rviz = TimerAction(
+        actions=[rviz_node],
+        period=5.0
     )
 
     # Robot State Publisher
@@ -75,5 +79,5 @@ def generate_launch_description():
         gazebo,
         robot_state_publisher_node,
         spawn_robot,
-        rviz_node,
+        delayed_rviz,
     ])

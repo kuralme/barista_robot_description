@@ -5,6 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /RobotModel1/Description Topic1
+        - /TF1
+        - /TF1/Frames1
         - /LaserScan1
       Splitter Ratio: 0.5117647051811218
     Tree Height: 528
@@ -69,27 +71,27 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        caster_pitch_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_roll_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_yaw_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         cupholder_tray:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_pitch_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_roll_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_yaw_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -109,22 +111,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_rods_bl:
+        standoff_rod_bl:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_rods_br:
+        standoff_rod_br:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_rods_fl:
+        standoff_rod_fl:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        standoff_rods_fr:
+        standoff_rod_fr:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -144,16 +146,16 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
+        caster_pitch_link:
+          Value: true
+        caster_roll_link:
+          Value: false
+        caster_yaw_link:
+          Value: false
         chassis:
           Value: true
         cupholder_tray:
           Value: false
-        front_pitch_link:
-          Value: true
-        front_roll_link:
-          Value: true
-        front_yaw_link:
-          Value: true
         laser_scan_link:
           Value: true
         left_wheel:
@@ -162,13 +164,13 @@ Visualization Manager:
           Value: true
         right_wheel:
           Value: true
-        standoff_rods_bl:
+        standoff_rod_bl:
           Value: true
-        standoff_rods_br:
+        standoff_rod_br:
           Value: true
-        standoff_rods_fl:
+        standoff_rod_fl:
           Value: true
-        standoff_rods_fr:
+        standoff_rod_fr:
           Value: true
       Marker Scale: 0.30000001192092896
       Name: TF
@@ -179,25 +181,25 @@ Visualization Manager:
         odom:
           base_link:
             chassis:
+              caster_yaw_link:
+                caster_roll_link:
+                  caster_pitch_link:
+                    {}
               cupholder_tray:
                 {}
-              front_yaw_link:
-                front_roll_link:
-                  front_pitch_link:
-                    {}
               laser_scan_link:
                 {}
               left_wheel:
                 {}
               right_wheel:
                 {}
-              standoff_rods_bl:
+              standoff_rod_bl:
                 {}
-              standoff_rods_br:
+              standoff_rod_br:
                 {}
-              standoff_rods_fl:
+              standoff_rod_fl:
                 {}
-              standoff_rods_fr:
+              standoff_rod_fr:
                 {}
       Update Interval: 0
       Value: true
@@ -281,25 +283,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.4664900302886963
+      Distance: 1.6049189567565918
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.7918916344642639
-        Y: 0.09828745573759079
-        Z: 0.4137800633907318
+        X: 0.19676560163497925
+        Y: -0.03421791270375252
+        Z: 0.2780362367630005
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.36039796471595764
+      Pitch: 0.42039796710014343
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.993570804595947
+      Yaw: 5.243571758270264
     Saved: ~
 Window Geometry:
   Displays:

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="drive_wheel" params="side parent xyz">
+  <joint name="joint_${side}_wheel" type="continuous">
+    <origin rpy="0 0 0" xyz="${xyz}"/>
+    <parent link="${parent}"/>
+    <child link="${side}_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="${side}_wheel">
+    <visual>
+      <origin rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder length="0.0206" radius="0.0352"/>
+      </geometry>
+      <material name="Gazebo/Black">
+          <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5707 1.5707"/>
+      <geometry>
+        <cylinder length="0.0206" radius="0.0352"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
+      <inertia ixx="0.00061952" ixy="0" ixz="0" iyy="0.00013216" iyz="0" izz="0.00013216"/>
+    </inertial>
+  </link>
+  
+</xacro:macro>
+</robot>
