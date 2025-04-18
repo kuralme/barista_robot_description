@@ -3,13 +3,13 @@
 
 <xacro:macro name="cup_holder_tray" params="parent xyz">
 
-  <joint name="cupholder_tray_joint" type="fixed">
+  <joint name="${prefix}cupholder_tray_joint" type="fixed">
     <origin rpy="0 0 0" xyz="${xyz}"/>
     <parent link="${parent}"/>
-    <child link="cupholder_tray"/>
+    <child link="${prefix}cupholder_tray"/>
   </joint>
 
-  <link name="cupholder_tray">
+  <link name="${prefix}cupholder_tray">
     <visual>
       <geometry>
         <cylinder length="0.09" radius="0.16"/>

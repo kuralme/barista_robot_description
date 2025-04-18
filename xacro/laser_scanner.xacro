@@ -3,12 +3,12 @@
 
 <xacro:macro name="laser_scanner" params="parent xyz">
 
-  <joint name="joint_laser_scan" type="fixed">
+  <joint name="${prefix}joint_laser_scan" type="fixed">
     <origin rpy="0 0 0" xyz="${xyz}"/>
     <parent link="${parent}"/>
-    <child link="laser_scan_link"/>
+    <child link="${prefix}laser_scan_link"/>
   </joint>
-  <link name="laser_scan_link">
+  <link name="${prefix}laser_scan_link">
     <visual>
        <origin rpy="0 0 0" xyz="0 0 -0.055"/>
       <geometry>

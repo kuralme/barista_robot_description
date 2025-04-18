@@ -15,7 +15,7 @@ def generate_launch_description():
     robot_name1 = "rick"
     robot_name2 = "morty"
     position_r1 = [0.0, 0.0, 0.1]
-    position_r2 = [3.0, 1.0, 0.1]
+    position_r2 = [1.0, 1.0, 0.1]
     orientation_r1 = [0.0, 0.0, 0.0]
     orientation_r2 = [0.0, 0.0, 0.0]
 
@@ -56,8 +56,10 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         namespace=robot_name1,
-        parameters=[{'frame_prefix': robot_name1+'/', 'use_sim_time': True,
-                    'robot_description': Command(['xacro ', robot_desc_path, ' robot_name:=', robot_name1])}],
+        parameters=[{
+            'use_sim_time': True,
+            'robot_description': Command(['xacro ', robot_desc_path, ' robot_name:=', robot_name1])
+        }],
         output="screen"
     )
     rsp_robot2 = Node(
@@ -65,8 +67,10 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         namespace=robot_name2,
-        parameters=[{'frame_prefix': robot_name2+'/', 'use_sim_time': True,
-                     'robot_description': Command(['xacro ', robot_desc_path, ' robot_name:=', robot_name2])}],
+        parameters=[{
+            'use_sim_time': True,
+            'robot_description': Command(['xacro ', robot_desc_path, ' robot_name:=', robot_name2])
+        }],
         output="screen"
     )
 
@@ -108,6 +112,21 @@ def generate_launch_description():
             )
         ]
     )
+    
+    static_tf_robot1 = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        name="static_tf_robot1",
+        arguments=['0','0','0','0','0','0',"world", robot_name1+"/odom"]
+    )
+    static_tf_robot2 = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        name="static_tf_robot2",
+        arguments=['0','0','0','0','0','0',"world", robot_name2+"/odom"]
+    )
+
+
     return LaunchDescription([
         set_gazebo_model_path,
         gazebo,
@@ -115,5 +134,7 @@ def generate_launch_description():
         rsp_robot2,
         spawn_robot1,
         spawn_robot2,
+        static_tf_robot1,
+        static_tf_robot2,
         delayed_rviz,
     ])

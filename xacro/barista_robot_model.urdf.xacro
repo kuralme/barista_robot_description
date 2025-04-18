@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" robot_namespace="" name="barista_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="barista_robot">
 
   <xacro:property name="robot_name" value="$(arg robot_name)"/>
+  <xacro:property name="prefix" value="$(arg robot_name)/"/>
   <xacro:property name="include_laser" value="true"/>
 
   <xacro:include filename="$(find barista_robot_description)/xacro/drive_wheel.xacro"/>
@@ -22,14 +23,14 @@
   </xacro:unless>
 
   <!-- Robot chassis -->
-  <link name="base_link">
+  <link name="${prefix}base_link">
   </link>
-  <joint name="base_link_joint" type="fixed">
+  <joint name="${prefix}base_link_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.1132" />
-    <parent link="base_link" />
-    <child link="chassis" />
+    <parent link="${prefix}base_link" />
+    <child link="${prefix}chassis" />
   </joint>
-  <link name="chassis">
+  <link name="${prefix}chassis">
     <visual>
       <geometry>
           <cylinder length="0.155" radius="0.178"/>
@@ -51,26 +52,26 @@
   </link>
 
   <!-- Drive wheels macro -->
-  <xacro:drive_wheel side="left" parent="chassis" xyz="-0.05 0.13 -0.078"/>
-  <xacro:drive_wheel side="right" parent="chassis" xyz="-0.05 -0.13 -0.078"/>
+  <xacro:drive_wheel side="left" parent="${prefix}chassis" xyz="-0.05 0.13 -0.078"/>
+  <xacro:drive_wheel side="right" parent="${prefix}chassis" xyz="-0.05 -0.13 -0.078"/>
 
   <!-- Caster wheel macro -->
-  <xacro:caster_wheel parent="chassis" xyz="0.13 0 -0.078"/>
+  <xacro:caster_wheel parent="${prefix}chassis" xyz="0.13 0 -0.078"/>
 
   <!-- Standoff rods macro -->
-  <xacro:standoff_rod name="standoff_rod_fl" parent="chassis" xyz="0.03 0.13 0.188" length="0.22" radius="0.01"/>
-  <xacro:standoff_rod name="standoff_rod_fr" parent="chassis" xyz="0.03 -0.13 0.188" length="0.22" radius="0.01"/>
-  <xacro:standoff_rod name="standoff_rod_bl" parent="chassis" xyz="-0.03 0.13 0.188" length="0.22" radius="0.01"/>
-  <xacro:standoff_rod name="standoff_rod_br" parent="chassis" xyz="-0.03 -0.13 0.188" length="0.22" radius="0.01"/>
+  <xacro:standoff_rod name="${prefix}standoff_rod_fl" parent="${prefix}chassis" xyz="0.03 0.13 0.188" length="0.22" radius="0.01"/>
+  <xacro:standoff_rod name="${prefix}standoff_rod_fr" parent="${prefix}chassis" xyz="0.03 -0.13 0.188" length="0.22" radius="0.01"/>
+  <xacro:standoff_rod name="${prefix}standoff_rod_bl" parent="${prefix}chassis" xyz="-0.03 0.13 0.188" length="0.22" radius="0.01"/>
+  <xacro:standoff_rod name="${prefix}standoff_rod_br" parent="${prefix}chassis" xyz="-0.03 -0.13 0.188" length="0.22" radius="0.01"/>
 
   <!-- Cup holder tray macro -->
-  <xacro:cup_holder_tray parent="chassis" xyz="0 0.0 0.343"/>
+  <xacro:cup_holder_tray parent="${prefix}chassis" xyz="0 0.0 0.343"/>
 
   <!-- Conditionally include laser macro -->
   <xacro:if value="${include_laser}">
-    <xacro:laser_scanner parent="chassis" xyz="0.11 0 0.1325"/>
+    <xacro:laser_scanner parent="${prefix}chassis" xyz="0.11 0 0.1325"/>
   </xacro:if>
 
-  <!-- Gazebo elements macro -->
+  <!-- Gazebo elements/plugins macro -->
   <xacro:gazebo_elements />
 </robot>
