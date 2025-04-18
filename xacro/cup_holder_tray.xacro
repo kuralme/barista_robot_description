@@ -14,8 +14,8 @@
       <geometry>
         <cylinder length="0.09" radius="0.16"/>
       </geometry>
-      <material name="Gazebo/Blue">
-          <color rgba="0.0 0.0 1.0 1.0"/>
+      <material name="Robot Color">
+          <color rgba="${robot_color}"/>
       </material>
     </visual>
     <collision>
