@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<xacro:macro name="caster_wheel" params="parent xyz">
+<xacro:macro name="caster_wheel" params="side parent xyz">
 
   <!-- caster_yaw_joint -->
-  <joint name="${prefix}caster_yaw_joint" type="continuous">
+  <joint name="${prefix}${side}_caster_yaw_joint" type="continuous">
     <origin rpy="0 0 0" xyz="${xyz}"/>
     <parent link="${parent}"/>
-    <child link="${prefix}caster_yaw_link"/>
+    <child link="${prefix}${side}_caster_yaw_link"/>
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" velocity="100.0" />
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
-  <link name="${prefix}caster_yaw_link">
+  <link name="${prefix}${side}_caster_yaw_link">
     <visual>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>          
@@ -36,15 +36,15 @@
   </link>
 
   <!-- caster_roll_joint -->
-  <joint name="${prefix}caster_roll_joint" type="continuous">
+  <joint name="${prefix}${side}_caster_roll_joint" type="continuous">
     <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="${prefix}caster_yaw_link"/>
-    <child link="${prefix}caster_roll_link"/>
+    <parent link="${prefix}${side}_caster_yaw_link"/>
+    <child link="${prefix}${side}_caster_roll_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="1000.0" velocity="100.0" />
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
-  <link name="${prefix}caster_roll_link">
+  <link name="${prefix}${side}_caster_roll_link">
     <visual>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
@@ -68,15 +68,15 @@
   </link>
 
   <!-- caster_pitch_joint -->
-  <joint name="${prefix}caster_pitch_joint" type="continuous">
+  <joint name="${prefix}${side}_caster_pitch_joint" type="continuous">
     <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="${prefix}caster_roll_link"/>
-    <child link="${prefix}caster_pitch_link"/>
+    <parent link="${prefix}${side}_caster_roll_link"/>
+    <child link="${prefix}${side}_caster_pitch_link"/>
     <axis xyz="0 1 0"/>
     <limit effort="1000.0" velocity="100.0" />
     <dynamics damping="0.0" friction="0.1"/>
   </joint>
-  <link name="${prefix}caster_pitch_link">
+  <link name="${prefix}${side}_caster_pitch_link">
     <visual>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>

@@ -68,7 +68,15 @@
     <material>Gazebo/Black</material>
   </gazebo>
 
-  <gazebo reference="${prefix}caster_pitch_link">
+  <gazebo reference="${prefix}front_caster_pitch_link">
+    <kp>1000000000000000000000000000.0</kp>
+    <kd>1000000000000000000000000000.0</kd>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  
+  <gazebo reference="${prefix}back_caster_pitch_link">
     <kp>1000000000000000000000000000.0</kp>
     <kd>1000000000000000000000000000.0</kd>
     <mu1>1.0</mu1>
@@ -86,9 +94,12 @@
       <update_rate>30</update_rate>
       <joint_name>${prefix}joint_left_wheel</joint_name>
       <joint_name>${prefix}joint_right_wheel</joint_name>
-      <joint_name>${prefix}caster_yaw_joint</joint_name>
-      <joint_name>${prefix}caster_roll_joint</joint_name>
-      <joint_name>${prefix}caster_pitch_joint</joint_name>
+      <joint_name>${prefix}front_caster_yaw_joint</joint_name>
+      <joint_name>${prefix}front_caster_roll_joint</joint_name>
+      <joint_name>${prefix}front_caster_pitch_joint</joint_name>
+      <joint_name>${prefix}back_caster_yaw_joint</joint_name>
+      <joint_name>${prefix}back_caster_roll_joint</joint_name>
+      <joint_name>${prefix}back_caster_pitch_joint</joint_name>
     </plugin>
   </gazebo>
 
